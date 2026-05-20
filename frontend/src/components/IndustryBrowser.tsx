@@ -2,7 +2,18 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MovieCard } from './MovieCard';
 
-type IndustryMovie = Record<string, unknown>;
+type IndustryMovie = {
+  title: string;
+  overview: string;
+  poster_url: string;
+  rating: number;
+  score: number;
+  reason: string;
+  id?: number;
+  language?: string;
+  genres?: string;
+  year?: string;
+};
 
 type IndustryEntry = {
   industry: typeof INDUSTRIES[number];

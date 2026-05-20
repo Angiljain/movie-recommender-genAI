@@ -42,6 +42,25 @@ class VectorStore:
                     distance=models.Distance.COSINE
                 )
             )
+            
+        # Ensure keyword index is created for industry and language filtering
+        try:
+            self.client.create_payload_index(
+                collection_name=self.collection_name,
+                field_name="industry",
+                field_schema=models.PayloadSchemaType.KEYWORD
+            )
+        except Exception as e:
+            print(f"Warning: Could not create payload index for 'industry': {e}")
+
+        try:
+            self.client.create_payload_index(
+                collection_name=self.collection_name,
+                field_name="language",
+                field_schema=models.PayloadSchemaType.KEYWORD
+            )
+        except Exception as e:
+            print(f"Warning: Could not create payload index for 'language': {e}")
 
     def upsert(self, movies: list[dict], embeddings: list[list[float]]):
         points = []

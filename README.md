@@ -1,13 +1,13 @@
 # GenAI Movie Recommender
 
 A modern movie recommendation system built for fast semantic discovery.
-This project uses Voyage AI embeddings, TMDB movie metadata, and ChromaDB vector search to recommend movies based on natural language queries.
+This project uses Voyage AI embeddings, TMDB movie metadata, and Qdrant vector search to recommend movies based on natural language queries.
 
 ## What it does
 - Uses **Voyage AI** to generate high-quality semantic embeddings for movie descriptions.
-- Stores vectors in **ChromaDB** for fast nearest-neighbor retrieval.
+- Stores vectors in **Qdrant** for fast nearest-neighbor retrieval (supports local file storage or Qdrant Cloud).
 - Fetches movie metadata from **TMDB**.
-- Returns ranked movie recommendations with AI-generated explanation text.
+- Returns ranked movie recommendations instantly.
 - Provides a **Next.js** frontend to search and browse recommendations.
 
 ## Configuration & Environment Variables
@@ -18,6 +18,8 @@ Configure the following environment variables for deployment or runtime:
 ```env
 TMDB_API_KEY=your_tmdb_api_key
 VOYAGE_API_KEY=your_voyage_api_key
+QDRANT_URL=your_qdrant_cloud_endpoint_url (optional, defaults to local folder if omitted)
+QDRANT_API_KEY=your_qdrant_api_key (optional, defaults to local folder if omitted)
 ```
 
 ### Frontend Variables (`frontend/.env.local`)
@@ -28,9 +30,9 @@ NEXT_PUBLIC_API_URL=https://your-deployed-backend-url.com
 ## Deployment
 
 ### Backend (FastAPI)
-The backend is a FastAPI application that can be deployed to platforms like **Render**, **Railway**, **Fly.io**, or **AWS**.
+The backend is a FastAPI application that can be deployed stateless on platforms like **Render**, **Railway**, **Fly.io**, or **AWS**.
 - **Start Command**: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
-- Ensure `TMDB_API_KEY` and `VOYAGE_API_KEY` are configured in your platform's environment settings.
+- Ensure the keys are configured in your platform's environment settings.
 
 ### Frontend (Next.js)
 The frontend is a Next.js application designed to be deployed on **Vercel** or **Netlify**.
@@ -57,9 +59,8 @@ The frontend is a Next.js application with a home search page, detailed recommen
 │   ├── config.py            # environment config and settings
 │   ├── tmdb_fetcher.py      # TMDB API client
 │   ├── voyage_embeddings.py # Voyage AI embedding client
-│   ├── vector_db.py         # ChromaDB wrapper
+│   ├── vector_db.py         # Qdrant wrapper
 │   ├── recommender.py       # recommendation logic
-│   ├── gemini_explainer.py  # optional explanation generator
 │   └── data_loader.py       # dataset ingestion and embedding creation
 ├── frontend/
 │   ├── src/
@@ -70,12 +71,10 @@ The frontend is a Next.js application with a home search page, detailed recommen
 │   ├── package.json
 │   ├── tsconfig.json
 │   └── tailwind.config.ts
-├── chroma_db/               # local ChromaDB persistence store
-├── data/                    # movie CSV data
 └── requirements.txt
 ```
 
 ## Notes
-- Chat functionality has been optimized, leaving a focused Voyage embedding recommendation experience.
 - The system supports multiple movie industries and languages out-of-the-box.
+
 

@@ -1,14 +1,12 @@
 from .voyage_embeddings import VoyageEmbeddings
 from .vector_db import VectorStore
-from .gemini_explainer import GeminiExplainer
 
 class RecommenderEngine:
     def __init__(self):
         self.emb_client = VoyageEmbeddings()
         self.store = VectorStore()
-        self.explainer = GeminiExplainer()
 
-    async def recommend(self, query: str, top_k: int = 10, language: str = None, industry: str = None, min_rating: float = None, explain: bool = True):
+    async def recommend(self, query: str, top_k: int = 10, language: str = None, industry: str = None, min_rating: float = None, explain: bool = False):
         """
         Recommend movies based on a natural language query.
         Optional filters: language, industry, min_rating
@@ -27,17 +25,8 @@ class RecommenderEngine:
         # Keep top_k after filtering/sorting
         hits = hits[:top_k]
         
-        if not hits:
-            return []
-            
-        if explain:
-            titles = [h["title"] for h in hits]
-            reasons = await self.explainer.explain(titles, query)
-            for hit, reason in zip(hits, reasons):
-                hit["reason"] = reason
-        else:
-            for hit in hits:
-                hit["reason"] = ""
+        for hit in hits:
+            hit["reason"] = ""
                 
         return hits
 
@@ -56,3 +45,4 @@ class RecommenderEngine:
     async def get_trending(self, top_k: int = 10):
         """Get trending movies across all industries"""
         return await self.recommend("trending popular movies", top_k=top_k)
+

@@ -8,7 +8,7 @@ type IndustryMovie = {
   poster_url: string;
   rating: number;
   score: number;
-  reason: string;
+  reason?: string;
   id?: number;
   language?: string;
   genres?: string;

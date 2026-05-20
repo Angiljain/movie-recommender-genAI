@@ -28,7 +28,7 @@ type Props = {
     poster_url: string;
     rating: number;
     score: number;
-    reason: string;
+    reason?: string;
     id?: number;
     language?: string;
     genres?: string;
@@ -114,19 +114,9 @@ export function MovieCard({ movie, index = 0 }: Props) {
           <span className="text-xs text-amber-400 font-medium">⭐ {movie.rating?.toFixed(1) ?? 'N/A'}</span>
         </div>
 
-        <p className="text-xs text-gray-400 line-clamp-2 mb-3 leading-relaxed">
+        <p className="text-xs text-gray-400 line-clamp-4 leading-relaxed">
           {movie.overview}
         </p>
-
-        {/* AI Reason */}
-        <div className="mt-auto">
-          <div className="flex items-start gap-2 p-2.5 rounded-xl bg-primary/[0.06] border border-primary/[0.08]">
-            <span className="text-primary text-sm mt-0.5 flex-shrink-0">✦</span>
-            <p className="text-[11px] text-gray-300 line-clamp-2 leading-relaxed italic">
-              {movie.reason}
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );

@@ -26,6 +26,9 @@ class GeminiExplainer:
         return ""
 
     async def explain(self, movie_titles: list[str], user_query: str) -> list[str]:
+        if not settings.GEMINI_API_KEY:
+            return ["(explanation unavailable)"] * len(movie_titles)
+            
         prompt = (
             f"User asked: \"{user_query}\".\n"
             f"For each of the following movies, write a one-sentence recommendation reason "

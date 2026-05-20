@@ -132,6 +132,14 @@ async def get_industries():
             "korean",
             "japanese",
             "anime",
+            "spanish",
+            "french",
+            "chinese",
+            "german",
+            "italian",
+            "russian",
+            "turkish",
+            "thai",
             "international"
         ]
     }
@@ -156,6 +164,8 @@ async def get_languages():
             "pt": "Portuguese",
             "ru": "Russian",
             "zh": "Chinese",
+            "tr": "Turkish",
+            "th": "Thai"
         }
     }
 

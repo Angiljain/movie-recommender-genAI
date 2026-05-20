@@ -8,17 +8,18 @@ const LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇬🇧' },
   { code: 'hi', label: 'Hindi', flag: '🇮🇳' },
   { code: 'te', label: 'Telugu', flag: '🇮🇳' },
-
+  { code: 'ta', label: 'Tamil', flag: '🇮🇳' },
+  { code: 'kn', label: 'Kannada', flag: '🇮🇳' },
+  { code: 'ml', label: 'Malayalam', flag: '🇮🇳' },
   { code: 'ko', label: 'Korean', flag: '🇰🇷' },
-
-
-
+  { code: 'ja', label: 'Japanese', flag: '🇯🇵' },
+  { code: 'es', label: 'Spanish', flag: '🇪🇸' },
+  { code: 'fr', label: 'French', flag: '🇫🇷' },
+  { code: 'zh', label: 'Chinese', flag: '🇨🇳' },
   { code: 'de', label: 'German', flag: '🇩🇪' },
   { code: 'it', label: 'Italian', flag: '🇮🇹' },
-
   { code: 'pt', label: 'Portuguese', flag: '🇵🇹' },
   { code: 'ru', label: 'Russian', flag: '🇷🇺' },
-
   { code: 'th', label: 'Thai', flag: '🇹🇭' },
   { code: 'tr', label: 'Turkish', flag: '🇹🇷' },
 ];

@@ -16,6 +16,14 @@ INDUSTRIES = {
     "korean": {"method": "fetch_korean", "pages": 2},
     "japanese": {"method": "fetch_japanese", "pages": 2},
     "anime": {"method": "fetch_anime", "pages": 1},
+    "spanish": {"method": "fetch_spanish", "pages": 1},
+    "french": {"method": "fetch_french", "pages": 1},
+    "chinese": {"method": "fetch_chinese", "pages": 1},
+    "german": {"method": "fetch_german", "pages": 1},
+    "italian": {"method": "fetch_italian", "pages": 1},
+    "russian": {"method": "fetch_russian", "pages": 1},
+    "turkish": {"method": "fetch_turkish", "pages": 1},
+    "thai": {"method": "fetch_thai", "pages": 1},
 }
 
 # Genre mappings (TMDB genre IDs)

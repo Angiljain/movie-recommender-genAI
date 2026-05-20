@@ -24,12 +24,12 @@ const INDUSTRIES = [
   { id: 'hollywood', label: 'Hollywood', flag: '🎬', color: 'from-blue-600' },
   { id: 'bollywood', label: 'Bollywood', flag: '🇮🇳', color: 'from-orange-600' },
   { id: 'tollywood', label: 'Tollywood', flag: '🇮🇳', color: 'from-green-600' },
-  { id: 'kollywood', label: 'Kollywood', flag: '🇮🇳', color: 'from-red-600' },
-  { id: 'sandalwood', label: 'Sandalwood', flag: '🇮🇳', color: 'from-yellow-600' },
-  { id: 'mollywood', label: 'Mollywood', flag: '🇮🇳', color: 'from-pink-600' },
   { id: 'korean', label: 'Korean Cinema', flag: '🇰🇷', color: 'from-purple-600' },
   { id: 'japanese', label: 'Japanese Cinema', flag: '🇯🇵', color: 'from-red-500' },
   { id: 'anime', label: 'Anime', flag: '✨', color: 'from-violet-600' },
+  { id: 'spanish', label: 'Spanish Cinema', flag: '🇪🇸', color: 'from-amber-600' },
+  { id: 'french', label: 'French Cinema', flag: '🇫🇷', color: 'from-emerald-600' },
+  { id: 'chinese', label: 'Chinese Cinema', flag: '🇨🇳', color: 'from-rose-600' },
   { id: 'international', label: 'International', flag: '🌍', color: 'from-cyan-600' },
 ];
 

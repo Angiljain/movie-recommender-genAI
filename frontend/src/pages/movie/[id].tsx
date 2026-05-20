@@ -16,7 +16,7 @@ const LANG_NAMES: Record<string, string> = {
 export default function MovieDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const [movie, setMovie] = useState<Record<string, unknown> | null>(null);
+  const [movie, setMovie] = useState<any | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {

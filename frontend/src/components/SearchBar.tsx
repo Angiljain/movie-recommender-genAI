@@ -35,7 +35,7 @@ const EXAMPLE_QUERIES = [
 export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [language, setLanguage] = useState('');
-  const [results, setResults] = useState<Record<string, unknown>[]>([]);
+  const [results, setResults] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [showResults, setShowResults] = useState(false);

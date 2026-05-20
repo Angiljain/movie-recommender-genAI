@@ -1,0 +1,459 @@
+{
+  "users": {
+    "user_rq1itbv8": {
+      "liked_movies": [],
+      "disliked_movies": [],
+      "query_history": [
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "Fight Club",
+            "Pulp Fiction",
+            "Get Out",
+            "Prisoners",
+            "Donnie Darko"
+          ],
+          "timestamp": "2026-05-15T22:14:54.986247"
+        },
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "The Batman",
+            "The Power of the Dog",
+            "Dune",
+            "Everything Everywhere All at Once",
+            "Soul"
+          ],
+          "timestamp": "2026-05-15T22:15:46.451144"
+        },
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-15T22:15:53.764368"
+        },
+        {
+          "query": "heartwarming romantic movies",
+          "mood": "happy",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-15T22:16:01.016993"
+        },
+        {
+          "query": "mind-bending sci-fi like Inception",
+          "mood": "thoughtful",
+          "results": [
+            "Soul",
+            "Everything Everywhere All at Once",
+            "The Power of the Dog",
+            "Dune",
+            "The Father"
+          ],
+          "timestamp": "2026-05-15T22:16:33.832256"
+        },
+        {
+          "query": "mind-bending sci-fi like Inception",
+          "mood": "thoughtful",
+          "results": [
+            "Ex Machina",
+            "Inception",
+            "A Beautiful Mind",
+            "Soul",
+            "Her"
+          ],
+          "timestamp": "2026-05-15T22:18:02.549113"
+        },
+        {
+          "query": "epic fantasy adventure with a quest",
+          "mood": "adventurous",
+          "results": [
+            "Everything Everywhere All at Once",
+            "Soul",
+            "The Lord of the Rings: The Return of the King",
+            "The Pursuit of Happyness",
+            "The Lord of the Rings: The Fellowship of the Ring"
+          ],
+          "timestamp": "2026-05-15T22:27:37.387767"
+        },
+        {
+          "query": "heartwarming romantic movies",
+          "mood": "happy",
+          "results": [
+            "The Notebook",
+            "Eternal Sunshine of the Spotless Mind",
+            "The Shawshank Redemption",
+            "Midsommar",
+            "Titanic"
+          ],
+          "timestamp": "2026-05-15T22:30:08.632077"
+        },
+        {
+          "query": "heartwarming romantic movies",
+          "mood": "happy",
+          "results": [
+            "The Notebook",
+            "Eternal Sunshine of the Spotless Mind",
+            "The Shawshank Redemption",
+            "Midsommar",
+            "Titanic"
+          ],
+          "timestamp": "2026-05-15T22:30:24.804648"
+        },
+        {
+          "query": "heartwarming romantic movies",
+          "mood": "happy",
+          "results": [
+            "The Power of the Dog",
+            "Manchester by the Sea",
+            "Her",
+            "Django Unchained",
+            "Pan's Labyrinth"
+          ],
+          "timestamp": "2026-05-15T22:30:33.750703"
+        },
+        {
+          "query": "Feeling romantic and wanting love stories",
+          "mood": "romantic",
+          "results": [
+            "The Notebook",
+            "Her",
+            "Eternal Sunshine of the Spotless Mind",
+            "Midsommar",
+            "Moonlight"
+          ],
+          "timestamp": "2026-05-15T22:31:18.152252"
+        },
+        {
+          "query": "funny comedy to watch with friends",
+          "mood": "happy",
+          "results": [
+            "The Notebook",
+            "Amélie",
+            "The Grand Budapest Hotel",
+            "Pulp Fiction",
+            "Manchester by the Sea"
+          ],
+          "timestamp": "2026-05-15T22:34:46.472511"
+        },
+        {
+          "query": "funny comedy to watch with friends",
+          "mood": "happy",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-15T22:35:00.251857"
+        },
+        {
+          "query": "scary horror movie that will terrify me",
+          "mood": "scary",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-15T22:36:46.128997"
+        },
+        {
+          "query": "scary horror movie that will terrify me",
+          "mood": "scary",
+          "results": [
+            "Train to Busan",
+            "Parasite",
+            "Oldboy"
+          ],
+          "timestamp": "2026-05-15T22:36:54.490652"
+        },
+        {
+          "query": "scary horror movie that will terrify me",
+          "mood": "scary",
+          "results": [
+            "Alien",
+            "The Silence of the Lambs",
+            "Mulholland Drive",
+            "Donnie Darko",
+            "Psycho"
+          ],
+          "timestamp": "2026-05-15T22:37:05.542070"
+        },
+        {
+          "query": "Seeking inspiration and motivation",
+          "mood": "neutral",
+          "results": [
+            "Soul",
+            "The Pursuit of Happyness",
+            "Her",
+            "Good Will Hunting",
+            "Nomadland"
+          ],
+          "timestamp": "2026-05-15T22:54:23.310145"
+        },
+        {
+          "query": "heartwarming romantic movies",
+          "mood": "happy",
+          "results": [
+            "One from the Heart",
+            "The Drama",
+            "A Heart to Heart",
+            "Playing by Heart",
+            "Random Hearts"
+          ],
+          "timestamp": "2026-05-15T23:56:50.031168"
+        },
+        {
+          "query": "heartwarming romantic movies",
+          "mood": "happy",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-15T23:59:37.086083"
+        },
+        {
+          "query": "epic fantasy adventure with a quest",
+          "mood": "adventurous",
+          "results": [
+            "A Tale of Legendary Libido",
+            "Happy Hours, Part 1",
+            "Epic",
+            "Beau Is Afraid",
+            "When I Get Home"
+          ],
+          "timestamp": "2026-05-16T00:11:45.572513"
+        },
+        {
+          "query": "epic fantasy adventure with a quest",
+          "mood": "adventurous",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:11:56.088421"
+        },
+        {
+          "query": "mind-bending sci-fi like Inception",
+          "mood": "thoughtful",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:12:05.591887"
+        },
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "At the Sight of the Dark",
+            "Dark West",
+            "Dark City",
+            "Lockdown",
+            "Sympathy"
+          ],
+          "timestamp": "2026-05-16T00:19:19.382578"
+        },
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:19:33.435845"
+        },
+        {
+          "query": "Seeking inspiration and motivation",
+          "mood": "neutral",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:19:49.723072"
+        },
+        {
+          "query": "i want some romantic movie with thriller and inspirational",
+          "mood": "romantic",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:21:14.595930"
+        },
+        {
+          "query": "i want some romantic movie with thriller and inspirational",
+          "mood": "romantic",
+          "results": [
+            "The Notebook",
+            "Final Analysis",
+            "Romance",
+            "Love: Synthesized",
+            "Eternal Sunshine of the Spotless Mind"
+          ],
+          "timestamp": "2026-05-16T00:22:53.432722"
+        },
+        {
+          "query": "i want some romantic movie with thriller and inspirational",
+          "mood": "romantic",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:24:44.777788"
+        },
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "RRR"
+          ],
+          "timestamp": "2026-05-16T00:27:33.038843"
+        },
+        {
+          "query": "dark psychological thriller like Fight Club",
+          "mood": "thrilling",
+          "results": [
+            "City of God"
+          ],
+          "timestamp": "2026-05-16T00:27:53.739605"
+        },
+        {
+          "query": "romantic",
+          "mood": "romantic",
+          "results": [
+            "Romance",
+            "In the Mood for Love",
+            "Hopeful Romantic",
+            "Romantic Prelude",
+            "Happy Together"
+          ],
+          "timestamp": "2026-05-16T00:35:37.058628"
+        },
+        {
+          "query": "romantic",
+          "mood": "romantic",
+          "results": [
+            "Romantic Destinies",
+            "Below Her Mouth",
+            "Romantic",
+            "I Really Love My Husband",
+            "The Notebook"
+          ],
+          "timestamp": "2026-05-16T00:35:55.725552"
+        },
+        {
+          "query": "romantic",
+          "mood": "romantic",
+          "results": [
+            "Romance",
+            "In the Mood for Love",
+            "Romantic Prelude",
+            "Hopeful Romantic",
+            "Happy Together"
+          ],
+          "timestamp": "2026-05-16T00:36:25.158711"
+        },
+        {
+          "query": "bodyguard",
+          "mood": "neutral",
+          "results": [
+            "The Bodyguard",
+            "The Bodyguard",
+            "Bodyguard",
+            "Bodyguard",
+            "The Bodyguard"
+          ],
+          "timestamp": "2026-05-16T00:45:04.958581"
+        },
+        {
+          "query": "romantic",
+          "mood": "romantic",
+          "results": [
+            "Romance",
+            "In the Mood for Love",
+            "Romantic Prelude",
+            "Hopeful Romantic",
+            "Happy Together"
+          ],
+          "timestamp": "2026-05-16T00:46:59.276512"
+        },
+        {
+          "query": "In the mood for something emotionally deep",
+          "mood": "sad",
+          "results": [
+            "Hopeful Romantic",
+            "Romantic Prelude",
+            "The Drama",
+            "Versa",
+            "Playing by Heart"
+          ],
+          "timestamp": "2026-05-16T00:49:09.509647"
+        },
+        {
+          "query": "dhurandar",
+          "mood": "neutral",
+          "results": [
+            "Dhurandhar",
+            "Dhurandhar",
+            "The Pursuit of Lust",
+            "Sattendru Maarudhu Vaanilai",
+            "Dhurandhar: The Revenge"
+          ],
+          "timestamp": "2026-05-16T00:52:48.847915"
+        }
+      ],
+      "genre_preferences": {},
+      "mood_history": [
+        "scary",
+        "scary",
+        "scary",
+        "happy",
+        "happy",
+        "adventurous",
+        "adventurous",
+        "thoughtful",
+        "thrilling",
+        "thrilling",
+        "romantic",
+        "romantic",
+        "romantic",
+        "thrilling",
+        "thrilling",
+        "romantic",
+        "romantic",
+        "romantic",
+        "romantic",
+        "sad"
+      ],
+      "created_at": "2026-05-15T22:14:54.986247",
+      "last_active": "2026-05-16T00:52:48.847915"
+    },
+    "user_ilp9timd": {
+      "liked_movies": [],
+      "disliked_movies": [],
+      "query_history": [
+        {
+          "query": "sci-fi movie",
+          "mood": "neutral",
+          "results": [
+            "2001: A Space Odyssey",
+            "Alien",
+            "Interstellar",
+            "WALL-E",
+            "Annihilation"
+          ],
+          "timestamp": "2026-05-15T22:30:37.810717"
+        },
+        {
+          "query": "Avengers",
+          "mood": "neutral",
+          "results": [
+            "Avengers: Doomsday",
+            "Avengers: Doomsday",
+            "The Avengers",
+            "The Avengers",
+            "The Three Avengers"
+          ],
+          "timestamp": "2026-05-16T00:44:20.144813"
+        }
+      ],
+      "genre_preferences": {},
+      "mood_history": [],
+      "created_at": "2026-05-15T22:30:37.810717",
+      "last_active": "2026-05-16T00:44:20.144813"
+    }
+  }
+}

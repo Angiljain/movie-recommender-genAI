@@ -1,0 +1,37 @@
+# Environment Variables
+.env
+
+# Python Virtual Environment
+venv/
+ENV/
+env/
+.venv/
+bin/
+include/
+lib/
+share/
+pyvenv.cfg
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Databases
+chroma_db/
+*.sqlite3
+*.db
+
+# Frontend Dependencies & Build files
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/build/
+.next/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db

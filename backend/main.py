@@ -58,6 +58,15 @@ tmdb = TMDBClient()
 vector_store = VectorStore()
 emb_client = VoyageEmbeddings()
 
+@app.get("/")
+async def root():
+    return {
+        "status": "healthy",
+        "service": "GenAI Movie Recommender API",
+        "version": "2.0.0",
+        "documentation": "/docs"
+    }
+
 @app.on_event("startup")
 async def startup_event():
     # Load data using initialize_database which handles both language and industry

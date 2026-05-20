@@ -1,76 +1,118 @@
-import chromadb
-from chromadb.config import Settings as ChromaSettings
+from qdrant_client import QdrantClient
+from qdrant_client.http import models
 from .config import settings
+
+class CollectionProxy:
+    def __init__(self, qdrant_client, collection_name):
+        self.client = qdrant_client
+        self.name = collection_name
+
+    def count(self) -> int:
+        try:
+            info = self.client.get_collection(self.name)
+            return info.points_count
+        except Exception:
+            return 0
 
 class VectorStore:
     def __init__(self):
-        self.client = chromadb.PersistentClient(
-            path=settings.CHROMA_PERSIST_DIR,
-            settings=ChromaSettings(anonymized_telemetry=False)
-        )
-        self.collection = self.client.get_or_create_collection(name="movies")
+        # If QDRANT_URL and QDRANT_API_KEY are provided, connect to the Cloud instance.
+        # Otherwise, fall back to a local directory for seamless local development.
+        if settings.QDRANT_URL and settings.QDRANT_API_KEY:
+            self.client = QdrantClient(
+                url=settings.QDRANT_URL,
+                api_key=settings.QDRANT_API_KEY,
+            )
+        else:
+            self.client = QdrantClient(path="./qdrant_db")
+            
+        self.collection_name = "movies"
+        self._ensure_collection()
+        self.collection = CollectionProxy(self.client, self.collection_name)
+
+    def _ensure_collection(self):
+        try:
+            self.client.get_collection(collection_name=self.collection_name)
+        except Exception:
+            # Create collection with Voyage AI embeddings dimension size (1536)
+            self.client.create_collection(
+                collection_name=self.collection_name,
+                vectors_config=models.VectorParams(
+                    size=1536,
+                    distance=models.Distance.COSINE
+                )
+            )
 
     def upsert(self, movies: list[dict], embeddings: list[list[float]]):
-        ids = [str(m["id"]) for m in movies]
-        metadatas = []
-        for m in movies:
+        points = []
+        for i, m in enumerate(movies):
+            point_id = int(m["id"])
             metadata = {
                 "title": m.get("title", ""),
                 "overview": m.get("overview", ""),
-                "genres": m.get("genres_text", ""),
+                "genres": m.get("genres_text", "") or m.get("genres", ""),
                 "poster_url": m.get("poster_url") or "",
-                "year": m.get("release_year") or "",
-                "rating": float(m.get("rating") or 0.0),
+                "year": str(m.get("release_year") or m.get("year") or ""),
+                "rating": float(m.get("rating") or m.get("vote_average") or 0.0),
                 "popularity": float(m.get("popularity") or 0.0),
-                "language": m.get("original_language", "en"),
+                "language": m.get("original_language") or m.get("language") or "en",
                 "industry": m.get("industry", "international"),
             }
-            metadatas.append(metadata)
-
-        documents = [f"{m.get('title', '')} {m.get('overview', '')} {m.get('genres_text', '')}" for m in movies]
-        
-        # Batch upsert to chroma
-        self.collection.upsert(
-            ids=ids,
-            documents=documents,
-            embeddings=embeddings,
-            metadatas=metadatas,
+            points.append(
+                models.PointStruct(
+                    id=point_id,
+                    vector=embeddings[i],
+                    payload=metadata
+                )
+            )
+            
+        self.client.upsert(
+            collection_name=self.collection_name,
+            points=points
         )
 
     def query(self, query_embedding: list[float], top_k: int = 10, language: str = None, industry: str = None):
         """Query the vector store. If language or industry is specified, filter results."""
-        where_filter = None
-        if language and industry:
-            where_filter = {"$and": [{"language": {"$eq": language}}, {"industry": {"$eq": industry}}]}
-        elif language:
-            where_filter = {"language": {"$eq": language}}
-        elif industry:
-            where_filter = {"industry": {"$eq": industry}}
-        
+        filter_conditions = []
+        if language:
+            filter_conditions.append(
+                models.FieldCondition(
+                    key="language",
+                    match=models.MatchValue(value=language)
+                )
+            )
+        if industry:
+            filter_conditions.append(
+                models.FieldCondition(
+                    key="industry",
+                    match=models.MatchValue(value=industry)
+                )
+            )
+            
+        qdrant_filter = None
+        if filter_conditions:
+            qdrant_filter = models.Filter(must=filter_conditions)
+            
         try:
-            results = self.collection.query(
-                query_embeddings=[query_embedding],
-                n_results=top_k,
-                include=["documents", "metadatas", "distances"],
-                where=where_filter,
+            results = self.client.search(
+                collection_name=self.collection_name,
+                query_vector=query_embedding,
+                limit=top_k,
+                query_filter=qdrant_filter
             )
         except Exception:
-            # If filtering fails (e.g., no docs match), query without filter
-            results = self.collection.query(
-                query_embeddings=[query_embedding],
-                n_results=top_k,
-                include=["documents", "metadatas", "distances"],
+            # Fallback without filter if it errors
+            results = self.client.search(
+                collection_name=self.collection_name,
+                query_vector=query_embedding,
+                limit=top_k
             )
-
-        if not results["ids"] or len(results["ids"][0]) == 0:
-            return []
             
         hits = []
-        for i, rid in enumerate(results["ids"][0]):
-            meta = results["metadatas"][0][i]
-            dist = results["distances"][0][i]
+        for r in results:
+            meta = r.payload
             hits.append({
-                "id": int(rid),
+                "id": int(r.id),
                 "title": meta.get("title"),
                 "overview": meta.get("overview"),
                 "poster_url": meta.get("poster_url"),
@@ -79,6 +121,7 @@ class VectorStore:
                 "language": meta.get("language", "en"),
                 "industry": meta.get("industry", "international"),
                 "genres": meta.get("genres", ""),
-                "score": round(1 - dist, 3),  # assuming cosine distance, 1-dist is similarity
+                "score": round(r.score, 3),
             })
         return hits
+

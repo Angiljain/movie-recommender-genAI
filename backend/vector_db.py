@@ -94,19 +94,21 @@ class VectorStore:
             qdrant_filter = models.Filter(must=filter_conditions)
             
         try:
-            results = self.client.search(
+            res = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding,
+                query=query_embedding,
                 limit=top_k,
                 query_filter=qdrant_filter
             )
+            results = res.points
         except Exception:
             # Fallback without filter if it errors
-            results = self.client.search(
+            res = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding,
+                query=query_embedding,
                 limit=top_k
             )
+            results = res.points
             
         hits = []
         for r in results:

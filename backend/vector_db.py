@@ -101,8 +101,9 @@ class VectorStore:
                 query_filter=qdrant_filter
             )
             results = res.points
-        except Exception:
+        except Exception as e:
             # Fallback without filter if it errors
+            print(f"  [Qdrant Filter Query Error]: {e}. Falling back to unfiltered search...")
             res = self.client.query_points(
                 collection_name=self.collection_name,
                 query=query_embedding,

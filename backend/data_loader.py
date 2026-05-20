@@ -178,12 +178,34 @@ class DataLoader:
 
 
 async def initialize_database():
-    """Initialize the database with movies from all industries"""
+    """Initialize the database with movies from all industries incrementally"""
+    from qdrant_client.http import models
     loader = DataLoader()
     
-    # Check if database is already populated
-    if loader.store.collection.count() > 50:
-        print("Database already populated with movies")
-        return
+    print("\n=== Initializing Database (Incremental Check) ===\n")
     
-    await loader.load_industry_data()
+    for industry, config in INDUSTRIES.items():
+        count = 0
+        try:
+            res = loader.store.client.count(
+                collection_name=loader.store.collection_name,
+                count_filter=models.Filter(
+                    must=[
+                        models.FieldCondition(
+                            key="industry",
+                            match=models.MatchValue(value=industry)
+                        )
+                    ]
+                )
+            )
+            count = res.count
+        except Exception as e:
+            print(f"Error checking industry '{industry}': {e}")
+            
+        if count == 0:
+            print(f"Industry '{industry}' is missing. Seeding now...")
+            await loader._load_industry(industry, config)
+        else:
+            print(f"Industry '{industry}' already populated with {count} movies. Skipping.")
+            
+    print("\n=== Database Initialization Complete ===\n")

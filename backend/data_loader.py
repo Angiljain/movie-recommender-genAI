@@ -114,7 +114,7 @@ class DataLoader:
             print(f"  Error storing movies: {e}")
 
         # Small pause between industry loads to avoid API throttling
-        await asyncio.sleep(1.0)
+        await asyncio.sleep(4.0)
 
     async def load_by_genre(self, genre_name: str):
         """Load movies for a specific genre"""

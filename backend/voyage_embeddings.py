@@ -18,8 +18,8 @@ class VoyageEmbeddings:
 
     async def _embed_batch(self, batch_texts: list[str]) -> list[list[float]]:
         payload = {"model": "voyage-large-2", "input": batch_texts}
-        max_retries = 3
-        backoff = 1.0
+        max_retries = 8
+        backoff = 4.0
 
         for attempt in range(1, max_retries + 1):
             try:
@@ -29,12 +29,14 @@ class VoyageEmbeddings:
             except httpx.HTTPStatusError as exc:
                 status = exc.response.status_code
                 if status == 429 and attempt < max_retries:
+                    print(f"  [Voyage AI Rate Limit 429] Retrying in {backoff}s (Attempt {attempt}/{max_retries})...")
                     await asyncio.sleep(backoff)
                     backoff *= 2
                     continue
                 raise
             except httpx.RequestError:
                 if attempt < max_retries:
+                    print(f"  [Voyage AI Request Error] Retrying in {backoff}s (Attempt {attempt}/{max_retries})...")
                     await asyncio.sleep(backoff)
                     backoff *= 2
                     continue
@@ -50,6 +52,6 @@ class VoyageEmbeddings:
             batch = texts[i : i + batch_size]
             embeddings.extend(await self._embed_batch(batch))
             if i + batch_size < len(texts):
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(1.5)
 
         return embeddings

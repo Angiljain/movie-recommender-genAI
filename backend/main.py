@@ -194,5 +194,24 @@ async def movie_detail(movie_id: int):
     except Exception:
         raise HTTPException(status_code=404, detail="Movie not found")
 
+@app.post("/database/reset")
+async def reset_database():
+    """Wipe the database collection and trigger a fresh, clean re-seed in the background"""
+    from .data_loader import initialize_database
+    try:
+        # Delete collection
+        if recommender.store.client.collection_exists(recommender.store.collection_name):
+            recommender.store.client.delete_collection(recommender.store.collection_name)
+        # Recreate collection
+        recommender.store._ensure_collection()
+        # Trigger seeding asynchronously
+        asyncio.create_task(initialize_database())
+        return {
+            "status": "success",
+            "message": "Database collection wiped successfully. Fresh background seeding has started."
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 if __name__ == "__main__":
     uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=True)

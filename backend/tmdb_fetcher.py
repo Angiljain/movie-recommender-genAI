@@ -53,6 +53,11 @@ class TMDBClient:
         
         movies = []
         for m in raw.get("results", []):
+            orig_lang = m.get("original_language", "en")
+            # For Hollywood (default trending fetch), strictly filter out non-English movies
+            # to prevent Bollywood/Korean/Anime blockbusters from mixing into Hollywood.
+            if not language and orig_lang != "en":
+                continue
             movies.append({
                 "id": m["id"],
                 "title": m.get("title", m.get("name", "")),
@@ -62,7 +67,7 @@ class TMDBClient:
                 "rating": m.get("vote_average"),
                 "popularity": m.get("popularity"),
                 "release_year": m.get("release_date", "").split("-")[0] if m.get("release_date") else None,
-                "original_language": m.get("original_language", "en"),
+                "original_language": orig_lang,
             })
         return movies
 
